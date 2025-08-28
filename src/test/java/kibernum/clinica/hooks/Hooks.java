@@ -1,26 +1,36 @@
 package kibernum.clinica.hooks;
 
-import java.time.Duration;
-
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Hooks {
 
     @Before
-    public void setUp(){
-        WebDriver driver = WebDriverManager.chromedriver().create();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://clinica-modular.netlify.app/");
+    public void setUp() {
+        DriverHolder.initDriver();
     }
 
     @After
-    public void tearDown(Scenario scenario){
+    public void tearDown(Scenario scenario) {
+        WebDriver driver = DriverHolder.getDriver();
+
+        if (scenario.isFailed()) {
+            try {
+                byte[] shot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(shot, "image/png", scenario.getName());
+            } catch (Exception e) {
+                System.err.println("Error tomando screenshot: " + e.getMessage());
+            }
+        }
+
+        if (driver != null) {
+            DriverHolder.quitDriver();
+        }
     }
-    
+
 }

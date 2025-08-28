@@ -1,12 +1,6 @@
 package kibernum.clinica.pages;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-public class LoginPage {
+public class LoginPage extends BasePage {
 
     // locators
     private String usernameFieldId = "username";
@@ -15,20 +9,24 @@ public class LoginPage {
     private String textErrorXpath = "//*[@id='login-message']/div";
 
 
-    private void getDriver(){
+  public void navigateToLogin() {
+    navigateTo("https://clinica-modular.netlify.app/");
+  } 
 
-    }
+  public void enterUser(String usernameInput) {
+    write("id", usernameFieldId, usernameInput);
+  }
 
-    public void login(String usuario,String password){
-        WebDriver driver = getDriver();
-        driver.findElement(By.id(usernameFieldId)).sendKeys(usuario);
-        driver.findElement(By.id(passwordFieldId)).sendKeys(password);
-        driver.findElement(By.xpath(submitButtonXpath)).click();
-    }
+  public void enterPass(String passwordInput) {
+    write("id", passwordFieldId, passwordInput);
+  }
 
-    public String getTextError(){
-       List<WebElement> messageError = getDriver().findElements(textErrorXpath);
-        return messageError.isEmpty()?"":messageError.get(0).getText().trim();
-    }
+  public void submitUser() {
+    clickElement("xpath", submitButtonXpath);
+  }
+
+  public String getErrorLoginMessage() {
+    return getElementText("xpath", textErrorXpath);
+  }
 
 }
