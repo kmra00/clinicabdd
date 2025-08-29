@@ -21,12 +21,19 @@ public class LoginPage extends BasePage {
     write("id", passwordFieldId, passwordInput);
   }
 
-  public void submitUser() {
+  public void submitButton() {
     clickElement("xpath", submitButtonXpath);
   }
 
   public String getErrorLoginMessage() {
     return getElementText("xpath", textErrorXpath);
+  }
+
+  public void login(String usernameInput, String passwordInput) {
+    navigateToLogin();
+    enterUser(usernameInput);
+    enterPass(passwordInput);
+    submitButton();
   }
 
 }

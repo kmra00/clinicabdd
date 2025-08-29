@@ -7,5 +7,5 @@ Feature: Validación de reglas clínicas
 
     Examples:
       | name        | diagnosis   | age | treatment   | message                                                        |
-      | Eliza Gonzalez | Otro        | 9  | Medicamento | Los menores de 12 años, el diagnóstico debe ser "Pediátrico". |
-      | Eliza Gonzalez | Pediátrico  | 11  |             | El tratamiento es obligatorio para guardar la ficha.           |
+      | Pepa Gonzalez | Otro        | 11  | Medicamento | Para menores de 12 años, el diagnóstico debe ser "Pediátrico". |
+      | Pepa Gonzalez | Pediátrico  | 10  |             | El tratamiento es obligatorio para guardar la ficha.           |

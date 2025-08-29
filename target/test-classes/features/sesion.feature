@@ -9,5 +9,5 @@ Feature: Inicio de sesión médico
   @login
   Scenario: Inicio de sesión con credenciales incorrectas
     Given que el médico abre la página de inicio de sesión
-    When ingresa el usuario "wrong user" y la contraseña "wrong password"
+    When ingresa el usuario "nouser" y la contraseña "nopass"
     Then se ve el mensaje de error "Credenciales inválidas. Intenta de nuevo."
