@@ -3,36 +3,12 @@ Este proyecto implementa un framework de automatización de pruebas para un sist
 Incluye la validación de flujos críticos como inicio de sesión, registro de fichas médicas y validación de reglas de negocio.
 
 📁 Estructura del Proyecto
-kibernum-clinica-bdd/
-│
-├── src/
-│   └── test/
-│       ├── java/
-│       │   └── kibernum/
-│       │       └── clinica/
-│       │           ├── hooks/
-│       │           │   ├── DriverHolder.java
-│       │           │   └── Hooks.java
-│       │           ├── pages/
-│       │           │   ├── BasePage.java
-│       │           │   ├── LoginPage.java
-│       │           │   └── RegistroPacientePage.java
-│       │           ├── steps/
-│       │           │   ├── LoginSteps.java
-│       │           │   └── RegistroPacienteSteps.java
-│       │           └── RunCucumberTest.java
-│       │
-│       └── resources/
-│           └── features/
-│               ├── sesion.feature
-│               ├── carga.feature
-│               └── reglas.feature
-│
-├── target/
-│   └── cucumber-report.html
-│
-├── pom.xml
-└── README.md
+kibernum.clinica
+├── hooks           → Configuración del navegador
+├── pages           → Page Object Models
+├── steps           → Implementación de steps Cucumber
+└── resources       → Archivos .feature (especificaciones)
+
 🚀 Requisitos
 Java 8 o superior
 
